@@ -26,67 +26,41 @@
             overflow-x: hidden;
         }
 
-        /* ── HERO ── */
+        /* ── NUEVO BANNER VALTOR (COLOR RENOVADO Y FINO) ── */
         .hero {
             position: relative;
-            background: var(--dark);
-            padding: 70px 24px 60px;
+            background: linear-gradient(135deg, #F3ECE0 0%, #EAE1D4 100%);
+            padding: 55px 24px 45px;
             text-align: center;
-            overflow: hidden;
+            border-bottom: 1px solid #E2D7C7;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(201,169,110,0.12) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(201,169,110,0.08) 0%, transparent 40%);
-            pointer-events: none;
-        }
-        .hero-lines {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .hero-lines::before, .hero-lines::after {
-            content: '';
-            position: absolute;
-            border: 1px solid rgba(201,169,110,0.15);
-            border-radius: 50%;
-        }
-        .hero-lines::before { width: 600px; height: 600px; top: -300px; right: -200px; }
-        .hero-lines::after  { width: 400px; height: 400px; bottom: -250px; left: -150px; }
-
         .hero-badge {
             display: inline-block;
-            border: 1px solid rgba(201,169,110,0.5);
-            color: var(--gold);
-            font-size: 0.7em;
-            letter-spacing: 0.2em;
+            border: 1px solid rgba(92,61,46,0.3);
+            color: var(--brown);
+            font-size: 0.75em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            padding: 5px 16px;
+            padding: 6px 18px;
             border-radius: 50px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-weight: 500;
-            animation: fadeDown 0.7s ease both;
+            background: rgba(255,255,255,0.4);
         }
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8em, 8vw, 5em);
+            font-size: clamp(2.5em, 7vw, 4.5em);
             font-weight: 900;
-            color: var(--warm-white);
-            line-height: 1;
-            margin-bottom: 14px;
-            animation: fadeDown 0.7s 0.1s ease both;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 10px;
         }
-        h1 span { color: var(--gold); }
+        h1 span { color: var(--brown); }
         .slogan {
-            color: var(--text-muted);
+            color: #726458;
             font-size: 1em;
-            font-weight: 300;
-            letter-spacing: 0.05em;
-            animation: fadeDown 0.7s 0.2s ease both;
+            font-weight: 400;
+            letter-spacing: 0.03em;
         }
 
         /* ── DIVISORES ── */
@@ -95,7 +69,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin: 40px auto 24px;
+            margin: 35px auto 20px;
             padding: 0 24px;
         }
         .divider::before, .divider::after {
@@ -104,8 +78,8 @@
             max-width: 120px;
             height: 1px;
         }
-        .divider::before { background: linear-gradient(to right, transparent, var(--gold-light)); }
-        .divider::after  { background: linear-gradient(to left,  transparent, var(--gold-light)); }
+        .divider::before { background: linear-gradient(to right, transparent, var(--gold)); }
+        .divider::after  { background: linear-gradient(to left,  transparent, var(--gold)); }
         .divider-text {
             font-family: 'Playfair Display', serif;
             font-size: 1.2em;
@@ -114,12 +88,54 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── ESTRUCTURA DE CONTENIDO Y SECCIONES CLARAS ── */
+        /* ── CARRUSEL PRINCIPAL (TODAS LAS FOTOS GRANDES Y CLARAS) ── */
+        .galeria-contenedor {
+            width: 100%;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .galeria {
+            display: flex;
+            flex-wrap: nowrap; 
+            overflow-x: auto;  
+            -webkit-overflow-scrolling: touch; 
+            justify-content: flex-start; 
+            gap: 18px; 
+            padding: 20px 10px; 
+        }
+        .galeria::-webkit-scrollbar { display: none; }
+        .galeria { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .galeria img {
+            width: 260px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(92,61,46,0.1);
+            flex-shrink: 0; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Se ven nítidas e iluminadas desde el primer momento */
+            opacity: 1; 
+        }
+        .galeria img.activa {
+            transform: scale(1.03);
+            box-shadow: 0 12px 28px rgba(92,61,46,0.18);
+        }
+
+        .indicador-deslizar {
+            font-size: 0.85em;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: -5px;
+            margin-bottom: 25px;
+        }
+
+        /* ── SECCIONES DE PRODUCTOS (DESCRIPCIÓN + FOTO FIJA ASOCIADA) ── */
         .seccion-modelo {
             max-width: 650px;
-            margin: 0 auto 40px;
+            margin: 0 auto 35px;
             padding: 0 20px;
-            animation: fadeUp 0.6s ease both;
         }
 
         .info-detallada {
@@ -133,56 +149,39 @@
         
         .info-detallada h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5em;
+            font-size: 1.6em;
             color: var(--dark);
             margin-bottom: 15px;
             border-bottom: 1px solid var(--cream);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
         
         .specs-lista {
             list-style: none;
-            margin: 15px 0;
+            margin: 20px 0;
             font-size: 0.95em;
             color: #4A423A;
             line-height: 1.7;
+        }
+        .specs-lista li {
+            margin-bottom: 8px;
         }
         .specs-lista li::before {
             content: "• ";
             color: var(--gold);
             font-weight: bold;
+            margin-right: 4px;
         }
 
-        /* ── CARRUSELES INDIVIDUALES PARA CADA MODELO ── */
-        .galeria {
-            display: flex;
-            flex-wrap: nowrap; 
-            overflow-x: auto;  
-            -webkit-overflow-scrolling: touch; 
-            justify-content: flex-start; 
-            gap: 15px; 
-            margin: 15px 0 25px;
-            padding: 15px 5px; 
-        }
-        .galeria::-webkit-scrollbar { display: none; }
-        .galeria { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .galeria img {
-            width: 140px;
-            height: 140px;
+        /* Foto fija grande para asociar directo al texto */
+        .foto-fija-producto {
+            width: 100%;
+            height: 280px;
             object-fit: cover;
             border-radius: 16px;
+            margin-top: 15px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
             cursor: pointer;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-            flex-shrink: 0; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; 
-            opacity: 0.5; 
-        }
-        .galeria img.activa {
-            transform: scale(1.1) translateY(-3px); 
-            opacity: 1; 
-            box-shadow: 0 10px 20px rgba(92,61,46,0.12); 
-            z-index: 1; 
         }
 
         .fabrica-destacado {
@@ -190,13 +189,13 @@
             background: var(--cream);
             padding: 24px 20px;
             border-radius: 20px;
-            margin: 10px 0 0;
+            margin: 25px 0 0;
             font-size: 0.95em;
             color: var(--brown);
             line-height: 1.6;
         }
 
-        /* ── BLOQUE DE BOTONES (TUKTOK, IG, WA, MAPA) ── */
+        /* ── BLOQUE DE BOTONES ORIGINALES UNIFICADOS ── */
         .btns-wrap {
             display: flex;
             flex-direction: column;
@@ -220,7 +219,6 @@
             max-width: 320px;
             transition: all 0.2s;
             letter-spacing: 0.01em;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .btn-social svg { width: 22px; height: 22px; flex-shrink: 0; }
         .btn-social:hover { transform: translateY(-2px); filter: brightness(1.08); }
@@ -249,7 +247,7 @@
         }
         .btn-ubi:hover { background: var(--brown); color: white; border-color: var(--brown); transform: translateY(-2px); }
 
-        /* ── MODAL VISUALIZADOR DE FOTOS ── */
+        /* ── LIGHTBOX MODAL ── */
         .modal {
             display: none;
             position: fixed;
@@ -258,14 +256,14 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(26,22,18,0.95);
+            background-color: rgba(26,22,18,0.96);
             justify-content: center;
             align-items: center;
         }
         .modal img {
-            max-width: 90%;
-            max-height: 75%;
-            border-radius: 16px;
+            max-width: 92%;
+            max-height: 80%;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .close, .prev, .next {
@@ -274,102 +272,95 @@
             font-size: 2.5em;
             cursor: pointer;
             user-select: none;
-            background: rgba(0,0,0,0.3);
-            width: 50px;
-            height: 50px;
-            line-height: 46px;
+            background: rgba(0,0,0,0.4);
+            width: 48px;
+            height: 48px;
+            line-height: 44px;
             text-align: center;
             border-radius: 50%;
         }
-        .close { top: 5%; right: 5%; font-size: 2em; }
+        .close { top: 4%; right: 5%; font-size: 2em; }
         .prev { left: 4%; top: 50%; transform: translateY(-50%); }
         .next { right: 4%; top: 50%; transform: translateY(-50%); }
 
-        /* ANIMACIONES */
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
         @media (max-width: 480px) {
-            .hero { padding: 56px 20px 48px; }
-            .seccion-modelo { padding: 0 16px; }
-            .info-detallada { padding: 24px 18px; }
-            .btns-wrap { padding: 24px 20px 44px; }
-            .btn-social { font-size: 1em; }
+            .hero { padding: 48px 20px 38px; }
+            .seccion-modelo { padding: 0 12px; }
+            .info-detallada { padding: 24px 16px; }
+            .galeria img { width: 220px; height: 280px; }
+            .foto-fija-producto { height: 220px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PORTADA PRINCIPAL -->
+    <!-- PORTADA RENOVADA -->
     <header class="hero">
-        <div class="hero-lines"></div>
         <div class="hero-badge">Desde Caseros, Buenos Aires</div>
         <h1>Valtor <span>Oficial</span></h1>
         <p class="slogan">Uniendo momentos, forjando historias</p>
     </header>
 
-    <div class="divider"><span class="divider-text">Línea de Sillones</span></div>
+    <div class="divider"><span class="divider-text">Galería Completa</span></div>
 
-    <!-- SECCIÓN SILLÓN 1 -->
+    <!-- CARRUSEL ÚNICO DE TRÁNSITO INFINITO -->
+    <div class="galeria-contenedor">
+        <div class="galeria" id="galeria-principal">
+            <img src="IMG-20260707-WA0015.jpg" onclick="abrirModal(0)">
+            <img src="IMG-20260707-WA0014.jpg" onclick="abrirModal(1)">
+            <img src="IMG-20260707-WA0013.jpg" onclick="abrirModal(2)">
+            <img src="IMG-20260707-WA0011.jpg" onclick="abrirModal(3)">
+            <img src="IMG-20260707-WA0010.jpg" onclick="abrirModal(4)">
+            <img src="IMG-20260707-WA0009.jpg" onclick="abrirModal(5)">
+        </div>
+        <div class="indicador-deslizar">← Deslizá para ver todos los ángulos →</div>
+    </div>
+
+    <div class="divider"><span class="divider-text">Modelos Disponibles</span></div>
+
+    <!-- DETALLES SILLÓN 1 + SU FOTO FIJA -->
     <div class="seccion-modelo">
         <div class="info-detallada">
             <h2>Sillón Cama Reclinable Premium</h2>
-            <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 10px;">Deslizá para ver todas las fotos de este modelo:</p>
             
-            <!-- Carrusel específico del Modelo 1 -->
-            <div class="galeria" id="galeria-reclinables">
-                <img src="IMG-20260707-WA0015.jpg" onclick="abrirModal(0)">
-                <img src="IMG-20260707-WA0014.jpg" onclick="abrirModal(1)">
-                <img src="IMG-20260707-WA0013.jpg" onclick="abrirModal(2)">
-            </div>
-
             <ul class="specs-lista">
-                <li>Sistema multi-posición inteligente con tres variantes (Sillón, Relax y Cama).</li>
-                <li>Tapizados Premium en Pana Soft o Corderoy de alto tránsito y fácil limpieza.</li>
-                <li>Patas de metal cromado reforzadas con bases de goma anti-rayas.</li>
-                <li>Placa soft de alta densidad para máxima comodidad y rebote perfecto.</li>
-                <li>Medidas Modo Sillón: 190 cm x 85 cm.</li>
-                <li>Medidas Modo Cama Extensible: 190 cm x 120 cm.</li>
+                <li><strong>Mecanismo:</strong> Tres posiciones inteligentes (Sillón de estar, Relax y Cama).</li>
+                <li><strong>Tapizados:</strong> Confeccionado en Pana Soft Premium o Corderoy de alto tránsito.</li>
+                <li><strong>Confort:</strong> Placa de espuma soft de alta densidad para máxima durabilidad.</li>
+                <li><strong>Soporte:</strong> Patas de metal cromado reforzadas con topes protectores.</li>
+                <li><strong>Medidas Sillón:</strong> 190 cm de largo x 85 cm de profundidad.</li>
+                <li><strong>Medidas Cama:</strong> Extensible a 190 cm x 120 cm en segundos.</li>
             </ul>
+
+            <!-- Foto clara asignada directamente a esta descripción -->
+            <img src="IMG-20260707-WA0014.jpg" class="foto-fija-producto" alt="Sillón Cama Reclinable" onclick="abrirModal(1)">
         </div>
     </div>
 
-    <!-- SECCIÓN SILLÓN 2 -->
+    <!-- DETALLES SILLÓN 2 + SU FOTO FIJA -->
     <div class="seccion-modelo">
         <div class="info-detallada">
-            <h2>Sillón Modular Inteligente Desplegable</h2>
-            <p style="color: var(--text-muted); font-size: 0.95em; margin-bottom: 10px;">Deslizá para ver todas las fotos de este modelo:</p>
+            <h2>Sillón Modular Desplegable</h2>
             
-            <!-- Carrusel específico del Modelo 2 -->
-            <div class="galeria" id="galeria-modulares">
-                <img src="IMG-20260707-WA0011.jpg" onclick="abrirModal(3)">
-                <img src="IMG-20260707-WA0010.jpg" onclick="abrirModal(4)">
-                <img src="IMG-20260707-WA0009.jpg" onclick="abrirModal(5)">
-            </div>
-
             <ul class="specs-lista">
-                <li>Diseño modular vanguardista al ras del suelo (Estética Nórdica/Minimalista).</li>
-                <li>Confección completa en Corderoy Premium de textura suave reforzada.</li>
-                <li>Almohadones de respaldo y posabrazos cilíndricos completamente movibles a gusto.</li>
-                <li>Se transforma de manera instantánea en una colchoneta gigante cómoda.</li>
-                <li>Medidas Cerrado: 200 cm x 90 cm.</li>
-                <li>Soporte perimetral ultra firme con arcos de acero ocultos.</li>
+                <li><strong>Diseño:</strong> Estilo vanguardista al ras del suelo, óptimo para espacios modernos.</li>
+                <li><strong>Versatilidad:</strong> Almohadones modulares cilíndricos completamente movibles.</li>
+                <li><strong>Materiales:</strong> Estructura en Corderoy texturado suave de gran resistencia.</li>
+                <li><strong>Apertura:</strong> Se transforma rápido en una superficie gigante estilo colchoneta.</li>
+                <li><strong>Medidas Modulares:</strong> Bloque base de 200 cm x 90 cm.</li>
             </ul>
+
+            <!-- Foto clara asignada directamente a esta descripción -->
+            <img src="IMG-20260707-WA0011.jpg" class="foto-fija-producto" alt="Sillón Modular" onclick="abrirModal(3)">
 
             <div class="fabrica-destacado">
                 <strong>Venta Directa de Fábrica</strong><br>
-                Envíos y entregas a todo el país. Efectivo, Transferencia o Mercado Pago.
+                Envíos a todo el país · Efectivo, Transferencia o Mercado Pago
             </div>
         </div>
     </div>
 
-    <!-- VENTANA MODAL (VISUALIZADOR GRANDE) -->
+    <!-- VISUALIZADOR MODAL EN PANTALLA COMPLETA -->
     <div class="modal" id="modal">
         <span class="close" onclick="cerrarModal()">&times;</span>
         <span class="prev" onclick="cambiar(-1)">&#10094;</span>
@@ -379,7 +370,7 @@
 
     <div class="divider"><span class="divider-text">Contacto y Redes</span></div>
 
-    <!-- ── BLOQUE DE BOTONES UNIFICADO ORIGINAL ── -->
+    <!-- BOTONES EXACTOS DEL CÓDIGO SOLICITADO -->
     <div class="btns-wrap">
 
         <a class="btn-social btn-wa"
@@ -418,7 +409,7 @@
 
     </div>
 
-    <!-- SCRIPTS DE NAVEGACIÓN -->
+    <!-- NAVEGACIÓN Y LOOP INFINITO DEL CARRUSEL -->
     <script>
         const fotos = [
             "IMG-20260707-WA0015.jpg", "IMG-20260707-WA0014.jpg", "IMG-20260707-WA0013.jpg",
@@ -443,35 +434,67 @@
             document.getElementById('modal-img').src = fotos[index];
         }
 
-        // Configuración de loops independientes infinitos para los dos carruses
-        function configurarCarruselInfinito(idCarrusel) {
-            const galeria = document.getElementById(idCarrusel);
-            const originales = Array.from(galeria.children);
-            const totalOriginales = originales.length;
+        // Lógica de bucle infinito del carrusel principal
+        const galeria = document.getElementById('galeria-principal');
+        const originales = Array.from(galeria.children);
+        const totalOriginales = originales.length;
 
-            // Clona elementos para dar la sensación infinita sin roturas
-            for (let i = 0; i < 3; i++) {
-                originales.forEach(img => galeria.appendChild(img.cloneNode(true)));
+        // Duplicar elementos para scroll continuo sin saltos visuales
+        for (let i = 0; i < 3; i++) {
+            originales.forEach(img => galeria.appendChild(img.cloneNode(true)));
+        }
+        originales.slice().reverse().forEach(img => galeria.insertBefore(img.cloneNode(true), galeria.firstChild));
+
+        const todasLasImgs = galeria.querySelectorAll('img');
+        const anchoItem = originales[0].offsetWidth + 18; 
+        const tamañoSetOriginal = anchoItem * totalOriginales;
+
+        // Iniciar en la zona central clonada
+        galeria.scrollLeft = tamañoSetOriginal * 1.5;
+
+        function actualizarImagenActiva() {
+            const centroGaleria = galeria.offsetWidth / 2 + galeria.scrollLeft;
+            let imagenMasCercana = null;
+            let distanciaMinima = Infinity;
+
+            todasLasImgs.forEach((img) => {
+                const centroImagen = img.offsetLeft + img.offsetWidth / 2;
+                const distancia = Math.abs(centroGaleria - centroImagen);
+                img.classList.remove('activa');
+
+                if (distancia < distanciaMinima) {
+                    distanciaMinima = distancia;
+                    imagenMasCercana = img;
+                }
+            });
+
+            if (imagenMasCercana) {
+                imagenMasCercana.classList.add('activa');
             }
-            originales.slice().reverse().forEach(img => galeria.insertBefore(img.cloneNode(true), galeria.firstChild));
+        }
 
-            const todasLasImgs = galeria.querySelectorAll('img');
-            const anchoItem = originales[0].offsetWidth + 15; 
-            const tamañoSetOriginal = anchoItem * totalOriginales;
+        galeria.addEventListener('scroll', () => {
+            actualizarImagenActiva();
+            // Reseteo invisible de posición en los extremos
+            if (galeria.scrollLeft >= tamañoSetOriginal * 2.5) {
+                galeria.scrollLeft -= tamañoSetOriginal;
+            } else if (galeria.scrollLeft <= anchoItem) {
+                galeria.scrollLeft += tamañoSetOriginal;
+            }
+        });
 
-            // Ubicar al medio al arrancar
-            galeria.scrollLeft = tamañoSetOriginal * 1.5;
-
-            function actualizarImagenActiva() {
-                const centroGaleria = galeria.offsetWidth / 2 + galeria.scrollLeft;
+        let scrollTimeout;
+        galeria.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const centroGaleria = galeria.offsetWidth / 2;
                 let imagenMasCercana = null;
                 let distanciaMinima = Infinity;
+                const centroActual = galeria.offsetWidth / 2 + galeria.scrollLeft;
 
                 todasLasImgs.forEach((img) => {
                     const centroImagen = img.offsetLeft + img.offsetWidth / 2;
-                    const distancia = Math.abs(centroGaleria - centroImagen);
-                    img.classList.remove('activa');
-
+                    const distancia = Math.abs(centroActual - centroImagen);
                     if (distancia < distanciaMinima) {
                         distanciaMinima = distancia;
                         imagenMasCercana = img;
@@ -479,15 +502,19 @@
                 });
 
                 if (imagenMasCercana) {
-                    imagenMasCercana.classList.add('activa');
+                    const centroImagen = imagenMasCercana.offsetLeft + imagenMasCercana.offsetWidth / 2;
+                    galeria.scrollTo({
+                        left: centroImagen - centroGaleria,
+                        behavior: 'smooth'
+                    });
                 }
-                return imagenMasCercana;
-            }
+            }, 150);
+        });
 
-            galeria.addEventListener('scroll', () => {
-                actualizarImagenActiva();
-                // Reseteos invisibles de posición si llega a los extremos clonados
-                if (galeria.scrollLeft >= tamañoSetOriginal * 2.5) {
-                    galeria.scrollLeft -= tamañoSetOriginal;
-                } else if (galeria.scrollLeft <= anchoItem) {
-                    galeria.scrollLeft += tamañoSetOri
+        window.addEventListener('load', () => {
+            setTimeout(actualizarImagenActiva, 100);
+        });
+    </script>
+
+</body>
+</html>
