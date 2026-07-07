@@ -13,6 +13,7 @@
             --gold: #C9A96E;
             --gold-light: #E8D5B0;
             --text-muted: #8A7D72;
+            --brown: #5C3D2E;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,6 +29,7 @@
             background: var(--dark);
             padding: 60px 20px 50px;
             text-align: center;
+            position: relative;
         }
         .hero-badge {
             display: inline-block;
@@ -49,69 +51,180 @@
         h1 span { color: var(--gold); }
         .slogan { color: var(--text-muted); font-weight: 300; }
 
-        .catalogo {
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px auto 20px;
             max-width: 800px;
-            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+        }
+        .divider-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            color: var(--brown);
+            font-weight: 700;
+        }
+
+        .catalogo {
+            max-width: 1000px;
+            margin: 0 auto 40px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .producto {
             background: #fff;
             border: 1px solid #E8E0D5;
             border-radius: 16px;
-            padding: 30px;
+            padding: 20px;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.2s;
-            display: block;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .producto:hover { transform: translateY(-5px); border-color: var(--gold); }
-        .producto-emoji { font-size: 2em; margin-bottom: 10px; }
-        .producto h3 { font-family: 'Playfair Display', serif; font-size: 1.4em; margin-bottom: 8px; }
-        .producto p { font-size: 0.9em; color: var(--text-muted); line-height: 1.5; }
+        .producto:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 10px 25px rgba(92,61,46,0.08); }
+        
+        .img-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: #fdfdfd;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .producto h3 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 6px; color: var(--dark); }
+        .producto .specs { font-size: 0.85em; color: var(--gold); font-weight: 500; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .producto p { font-size: 0.9em; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px; }
         .cta-btn { 
-            display: block; 
-            margin-top: 15px; 
+            margin-top: auto;
             color: var(--gold); 
             font-weight: bold; 
             font-size: 0.9em; 
+            text-align: right;
         }
 
-        .footer-info { text-align: center; padding: 40px 20px; color: var(--text-muted); font-size: 0.9em; }
+        .footer-info { text-align: center; padding: 40px 20px 60px; color: var(--text-muted); font-size: 0.95em; background: #FAF5EE; border-top: 1px solid #E8E0D5; }
+        .btn-wa-footer {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.2);
+            transition: transform 0.2s;
+        }
+        .btn-wa-footer:hover { transform: translateY(-2px); filter: brightness(1.05); }
     </style>
 </head>
 <body>
 
     <header class="hero">
-        <div class="hero-badge">Fábrica Directa</div>
+        <div class="hero-badge">Fábrica Directa · Caseros</div>
         <h1>Valtor <span>Sillones</span></h1>
-        <p class="slogan">Calidad premium con venta directa de fábrica</p>
+        <p class="slogan">Diseño premium y confort directo a tu hogar</p>
     </header>
 
+    <!-- SECCIÓN LÍNEA RECLINABLES -->
+    <div class="divider"><span class="divider-text">Línea Sillones Cama Reclinables</span></div>
+    
     <div class="catalogo">
-        <!-- Sillón 1 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20información%20sobre%20el%20Sillón%20Cama%20Reclinable" class="producto">
-            <div class="producto-emoji">🛋️</div>
-            <h3>Sillón Cama Reclinable</h3>
-            <p>Sistema práctico con patas metálicas. Ideal para espacios modernos.</p>
-            <span class="cta-btn">Consultar precio →</span>
+        <!-- Foto 15 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Gris%20en%20ambiente%20(Foto%2015)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0015.jpg" alt="Sillón Cama Reclinable Gris">
+            </div>
+            <h3>Sillón Cama Premium Gris</h3>
+            <div class="specs">Pana · 190 cm x 85 cm</div>
+            <p>Diseño capitoné elegante con patas de metal reforzadas. Ideal para living y espacios modernos.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
         </a>
 
-        <!-- Sillón 2 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20información%20sobre%20el%20Sillón%20Modular" class="producto">
-            <div class="producto-emoji">✨</div>
-            <h3>Sillón Modular Desplegable</h3>
-            <p>Confort total en pana o corderoy. Se adapta a tu relax.</p>
-            <span class="cta-btn">Consultar precio →</span>
+        <!-- Foto 14 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Gris%20Abierto%20(Foto%2014)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0014.jpg" alt="Sillón Cama Abierto Tipo Colchón">
+            </div>
+            <h3>Sillón Cama (Modo Colchón)</h3>
+            <div class="specs">Espuma Alta Densidad · 190 cm x 120 cm</div>
+            <p>Mismo modelo Gris Premium en su posición totalmente desplegada. Práctico, rápido y súper cómodo.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
+        </a>
+
+        <!-- Foto 13 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Verde%20Benetton%20(Foto%2013)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0013.jpg" alt="Sillón Cama Pana Verde">
+            </div>
+            <h3>Sillón Cama Verde Benetton</h3>
+            <div class="specs">Pana Premium · 190 cm x 85 cm</div>
+            <p>Tapizado exclusivo en pana suave con almohadones laterales y patas de diseño cromadas.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
+        </a>
+    </div>
+
+    <!-- SECCIÓN LÍNEA MODULARES -->
+    <div class="divider"><span class="divider-text">Línea Sofás Modulares Desplegables</span></div>
+
+    <div class="catalogo">
+        <!-- Foto 11 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Modular%20Beige%20(Foto%2011)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0011.jpg" alt="Sofá Modular Corderoy Beige">
+            </div>
+            <h3>Sofá Modular Beige</h3>
+            <div class="specs">Corderoy / Pana · 200 cm x 90 cm</div>
+            <p>Estructura al ras del suelo ultra confortable. Almohadones mullidos ideales para el relax diario.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
+        </a>
+
+        <!-- Foto 10 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Modular%20Chocolate%20(Foto%2010)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0010.jpg" alt="Sofá Modular Corderoy Chocolate">
+            </div>
+            <h3>Sofá Modular Chocolate</h3>
+            <div class="specs">Corderoy Importado · 200 cm x 90 cm</div>
+            <p>Confeccionado en tela corderoy de alta resistencia en tono marrón oscuro. Comodidad absoluta.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
+        </a>
+
+        <!-- Foto 9 -->
+        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Desplegable%20Azul%20con%20Arco%20(Foto%209)" class="producto">
+            <div class="img-container">
+                <img src="IMG-20260707-WA0009.jpg" alt="Sofá Desplegable Azul Marino">
+            </div>
+            <h3>Sofá Desplegable Azul Marino</h3>
+            <div class="specs">Corderoy con Soporte Metálico</div>
+            <p>Diseño inteligente de tres posiciones con soportes perimetrales de acero. Estilo y funcionalidad.</p>
+            <span class="cta-btn">Consultar fábrica →</span>
         </a>
     </div>
 
     <div class="footer-info">
-        <p>¿Tenés dudas? Contactanos por WhatsApp</p>
-        <a href="https://wa.me/5491141852322" style="color: var(--gold); margin-top: 10px; display: block; font-weight: bold;">Escribir a Valtor</a>
+        <p>¿Querés personalizar las medidas o elegir otra tela?</p>
+        <a href="https://wa.me/5491141852322?text=Hola%20Valtor!%20Quiero%20consultar%20por%20un%20sillón%20personalizado" class="btn-wa-footer">
+            💬 Hablar con un asesor por WhatsApp
+        </a>
     </div>
 
 </body>
