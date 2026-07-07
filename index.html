@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Valtor Oficial - Catálogo de Sillones</title>
+    <title>Valtor Oficial - Catálogo Premium</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=400;700;900&family=DM+Sans:wght=300;400;500&display=swap" rel="stylesheet">
@@ -23,13 +23,15 @@
             background: var(--warm-white);
             color: var(--dark);
             min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
         }
 
+        /* HEADER */
         .hero {
             background: var(--dark);
             padding: 60px 20px 50px;
             text-align: center;
-            position: relative;
         }
         .hero-badge {
             display: inline-block;
@@ -44,13 +46,14 @@
         }
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
+            font-size: 3.2em;
             color: var(--warm-white);
             margin-bottom: 10px;
         }
         h1 span { color: var(--gold); }
-        .slogan { color: var(--text-muted); font-weight: 300; }
+        .slogan { color: var(--text-muted); font-weight: 300; font-size: 1.1em; }
 
+        /* SECCIONES DIVISORAS */
         .divider {
             display: flex;
             align-items: center;
@@ -68,164 +71,384 @@
         }
         .divider-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: var(--brown);
             font-weight: 700;
         }
 
-        .catalogo {
-            max-width: 1000px;
-            margin: 0 auto 40px;
+        /* TARJETAS DE NUESTROS MODELOS (Tu estilo actual) */
+        .modelos-resumen {
+            max-width: 600px;
+            margin: 0 auto 30px;
             padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
         }
-
-        .producto {
+        .tarjeta-modelo {
             background: #fff;
             border: 1px solid #E8E0D5;
-            border-radius: 16px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
+            border-radius: 24px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 15px rgba(92,61,46,0.02);
+        }
+        .tarjeta-modelo .icon { font-size: 1.8em; margin-bottom: 10px; display: block; }
+        .tarjeta-modelo h2 { font-family: 'Playfair Display', serif; font-size: 1.4em; margin-bottom: 8px; color: var(--dark); }
+        .tarjeta-modelo p { color: var(--text-muted); font-size: 0.95em; line-height: 1.5; margin-bottom: 12px; }
+        .tarjeta-modelo .link-consultar { color: var(--gold); font-weight: bold; text-decoration: none; display: block; text-align: right; font-size: 0.95em; }
+
+        /* CARRUSEL INFINITO AUTOMÁTICO / TOUCH */
+        .galeria {
             display: flex;
-            flex-direction: column;
+            flex-wrap: nowrap; 
+            overflow-x: auto;  
+            -webkit-overflow-scrolling: touch; 
+            justify-content: flex-start; 
+            gap: 15px; 
+            margin: 20px 0 40px;
+            padding: 20px 10px; 
         }
-        .producto:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 10px 25px rgba(92,61,46,0.08); }
+        .galeria::-webkit-scrollbar { display: none; }
+        .galeria { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .img-container {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background: #fdfdfd;
-        }
-        .img-container img {
-            width: 100%;
-            height: 100%;
+        .galeria img {
+            width: 140px;
+            height: 140px;
             object-fit: cover;
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            flex-shrink: 0; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; 
+            opacity: 0.5; 
         }
-        
-        .producto h3 { font-family: 'Playfair Display', serif; font-size: 1.3em; margin-bottom: 6px; color: var(--dark); }
-        .producto .specs { font-size: 0.85em; color: var(--gold); font-weight: 500; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .producto p { font-size: 0.9em; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px; }
-        .cta-btn { 
-            margin-top: auto;
-            color: var(--gold); 
-            font-weight: bold; 
-            font-size: 0.9em; 
-            text-align: right;
+        .galeria img.activa {
+            transform: scale(1.15) translateY(-5px); 
+            opacity: 1; 
+            box-shadow: 0 10px 20px rgba(92,61,46,0.15); 
+            z-index: 1; 
         }
 
-        .footer-info { text-align: center; padding: 40px 20px 60px; color: var(--text-muted); font-size: 0.95em; background: #FAF5EE; border-top: 1px solid #E8E0D5; }
-        .btn-wa-footer {
+        /* INFORMACIÓN Y DESCRIPCIONES DETALLADAS */
+        .info-detallada {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            text-align: left;
+            background: #ffffff;
+            padding: 30px 24px;
+            border-radius: 24px;
+            border: 1px solid #E8E0D5;
+            box-shadow: 0 6px 20px rgba(92,61,46,0.03);
+        }
+        .info-detallada h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: var(--dark);
+            margin-top: 35px;
+            border-bottom: 1px solid var(--cream);
+            padding-bottom: 8px;
+        }
+        .info-detallada h3:first-child { margin-top: 0; }
+        
+        .specs-lista {
+            list-style: none;
+            margin: 15px 0;
+            font-size: 0.95em;
+            color: #4A423A;
+            line-height: 1.7;
+        }
+        .specs-lista li::before {
+            content: "• ";
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* GRILLAS DE IMÁGENES DENTRO DE LAS DESCRIPCIONES */
+        .imagenes-grupo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .modelo-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: block;
+            cursor: pointer;
+        }
+
+        /* SECCIÓN DE CIERRE Y BOTONES */
+        .fabrica-destacado {
+            text-align: center;
+            background: var(--cream);
+            padding: 30px 20px;
+            border-radius: 20px;
+            margin-top: 30px;
+            font-size: 1em;
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        .btn-whatsapp {
             display: inline-block;
             background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 15px 35px;
             border-radius: 50px;
-            font-weight: 500;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(37,211,102,0.2);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 30px auto 50px;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.3);
             transition: transform 0.2s;
         }
-        .btn-wa-footer:hover { transform: translateY(-2px); filter: brightness(1.05); }
+        .btn-whatsapp:hover { transform: translateY(-3px); }
+
+        /* MODAL PARA PASAR FOTOS EN GRANDE */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26,22,18,0.95);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 75%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .close, .prev, .next {
+            position: absolute;
+            color: white;
+            font-size: 2.5em;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(0,0,0,0.3);
+            width: 50px;
+            height: 50px;
+            line-height: 46px;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .close { top: 5%; right: 5%; font-size: 2em; }
+        .prev { left: 4%; top: 50%; transform: translateY(-50%); }
+        .next { right: 4%; top: 50%; transform: translateY(-50%); }
     </style>
 </head>
+
 <body>
 
+    <!-- PORTADA -->
     <header class="hero">
         <div class="hero-badge">Fábrica Directa · Caseros</div>
-        <h1>Valtor <span>Sillones</span></h1>
-        <p class="slogan">Diseño premium y confort directo a tu hogar</p>
+        <h1>Valtor <span>Oficial</span></h1>
+        <p class="slogan">Diseño, confort y calidad para tu hogar</p>
     </header>
 
-    <!-- SECCIÓN LÍNEA RECLINABLES -->
-    <div class="divider"><span class="divider-text">Línea Sillones Cama Reclinables</span></div>
-    
-    <div class="catalogo">
-        <!-- Foto 15 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Gris%20en%20ambiente%20(Foto%2015)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0015.jpg" alt="Sillón Cama Reclinable Gris">
-            </div>
-            <h3>Sillón Cama Premium Gris</h3>
-            <div class="specs">Pana · 190 cm x 85 cm</div>
-            <p>Diseño capitoné elegante con patas de metal reforzadas. Ideal para living y espacios modernos.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
+    <div class="divider"><span class="divider-text">Nuestros Modelos</span></div>
 
-        <!-- Foto 14 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Gris%20Abierto%20(Foto%2014)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0014.jpg" alt="Sillón Cama Abierto Tipo Colchón">
-            </div>
-            <h3>Sillón Cama (Modo Colchón)</h3>
-            <div class="specs">Espuma Alta Densidad · 190 cm x 120 cm</div>
-            <p>Mismo modelo Gris Premium en su posición totalmente desplegada. Práctico, rápido y súper cómodo.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
+    <!-- SECCIÓN 1: TUS TARJETAS RESUMEN -->
+    <div class="modelos-resumen">
+        <div class="tarjeta-modelo">
+            <span class="icon">🛋️</span>
+            <h2>Sillón Cama Reclinable</h2>
+            <p>Sistema multi-posición con patas cromadas. Máximo confort y practicidad en segundos.</p>
+            <a href="#linea-reclinables" class="link-consultar">Ver detalles →</a>
+        </div>
 
-        <!-- Foto 13 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sillón%20Cama%20Verde%20Benetton%20(Foto%2013)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0013.jpg" alt="Sillón Cama Pana Verde">
-            </div>
-            <h3>Sillón Cama Verde Benetton</h3>
-            <div class="specs">Pana Premium · 190 cm x 85 cm</div>
-            <p>Tapizado exclusivo en pana suave con almohadones laterales y patas de diseño cromadas.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
+        <div class="tarjeta-modelo">
+            <span class="icon">✨</span>
+            <h2>Sillón Modular Desplegable</h2>
+            <p>Tapizado en pana / corderoy de alta resistencia. Se transforma en colchón al ras del suelo.</p>
+            <a href="#linea-modulares" class="link-consultar">Ver detalles →</a>
+        </div>
     </div>
 
-    <!-- SECCIÓN LÍNEA MODULARES -->
-    <div class="divider"><span class="divider-text">Línea Sofás Modulares Desplegables</span></div>
-
-    <div class="catalogo">
-        <!-- Foto 11 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Modular%20Beige%20(Foto%2011)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0011.jpg" alt="Sofá Modular Corderoy Beige">
-            </div>
-            <h3>Sofá Modular Beige</h3>
-            <div class="specs">Corderoy / Pana · 200 cm x 90 cm</div>
-            <p>Estructura al ras del suelo ultra confortable. Almohadones mullidos ideales para el relax diario.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
-
-        <!-- Foto 10 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Modular%20Chocolate%20(Foto%2010)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0010.jpg" alt="Sofá Modular Corderoy Chocolate">
-            </div>
-            <h3>Sofá Modular Chocolate</h3>
-            <div class="specs">Corderoy Importado · 200 cm x 90 cm</div>
-            <p>Confeccionado en tela corderoy de alta resistencia en tono marrón oscuro. Comodidad absoluta.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
-
-        <!-- Foto 9 -->
-        <a href="https://wa.me/5491141852322?text=Hola,%20quiero%20consultar%20por%20el%20Sofá%20Desplegable%20Azul%20con%20Arco%20(Foto%209)" class="producto">
-            <div class="img-container">
-                <img src="IMG-20260707-WA0009.jpg" alt="Sofá Desplegable Azul Marino">
-            </div>
-            <h3>Sofá Desplegable Azul Marino</h3>
-            <div class="specs">Corderoy con Soporte Metálico</div>
-            <p>Diseño inteligente de tres posiciones con soportes perimetrales de acero. Estilo y funcionalidad.</p>
-            <span class="cta-btn">Consultar fábrica →</span>
-        </a>
+    <!-- SECCIÓN 2: EL CARRUSEL INTERACTIVO CON TUS IMÁGENES -->
+    <div class="galeria" id="galeria-fotos">
+        <img src="IMG-20260707-WA0015.jpg" onclick="abrirModal(0)">
+        <img src="IMG-20260707-WA0014.jpg" onclick="abrirModal(1)">
+        <img src="IMG-20260707-WA0013.jpg" onclick="abrirModal(2)">
+        <img src="IMG-20260707-WA0011.jpg" onclick="abrirModal(3)">
+        <img src="IMG-20260707-WA0010.jpg" onclick="abrirModal(4)">
+        <img src="IMG-20260707-WA0009.jpg" onclick="abrirModal(5)">
     </div>
 
-    <div class="footer-info">
-        <p>¿Querés personalizar las medidas o elegir otra tela?</p>
-        <a href="https://wa.me/5491141852322?text=Hola%20Valtor!%20Quiero%20consultar%20por%20un%20sillón%20personalizado" class="btn-wa-footer">
-            💬 Hablar con un asesor por WhatsApp
-        </a>
+    <!-- VENTANA MODAL (VISUALIZADOR) -->
+    <div class="modal" id="modal">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <span class="prev" onclick="cambiar(-1)">&#10094;</span>
+        <img id="modal-img" src="">
+        <span class="next" onclick="cambiar(1)">&#10095;</span>
     </div>
+
+    <!-- SECCIÓN 3: DESCRIPCIONES INDIVIDUALES Y DETALLES -->
+    <div class="info-detallada">
+        
+        <!-- MODELO 1 -->
+        <h3 id="linea-reclinables">Sillón Cama Reclinable Premium</h3>
+        <ul class="specs-lista">
+            <li>Tapizados Premium en Pana Soft o Corderoy de alto tránsito</li>
+            <li>Patas de metal cromado reforzadas con base anti-rayas</li>
+            <li>Placa soft de alta densidad para máxima comodidad y rebote</li>
+            <li>Mecanismo reclinable de tres posiciones (Sillón, Relax y Cama)</li>
+            <li>Incluye almohadones laterales combinados de regalo</li>
+        </ul>
+        <ul class="specs-lista">
+            <li>Medidas Modo Sillón: 190 cm x 85 cm</li>
+            <li>Medidas Modo Cama Extensible: 190 cm x 120 cm</li>
+        </ul>
+        
+        <div class="imagenes-grupo">
+            <img src="IMG-20260707-WA0015.jpg" class="modelo-img" onclick="abrirModal(0)">
+            <img src="IMG-20260707-WA0014.jpg" class="modelo-img" onclick="abrirModal(1)">
+        </div>
+        <img src="IMG-20260707-WA0013.jpg" class="modelo-img" style="width: 100%; margin-top: 0;" onclick="abrirModal(2)">
+
+
+        <!-- MODELO 2 -->
+        <h3 id="linea-modulares">Sillón Modular Inteligente Desplegable</h3>
+        <ul class="specs-lista">
+            <li>Confección en Corderoy Premium Importado texturado</li>
+            <li>Estructura modular al ras del suelo (ideal estética nórdica o minimalista)</li>
+            <li>Almohadones de respaldo y posabrazos cilíndricos completamente movibles</li>
+            <li>Soporte perimetral con arcos de acero pulido que mantienen los bloques firmes</li>
+            <li>Desplegable completo de manera instantánea para formato colchoneta gigante</li>
+        </ul>
+        <ul class="specs-lista">
+            <li>Medidas Cerrado: 200 cm x 90 cm</li>
+            <li>Variedad de colores: Beige Orgánico, Chocolate y Azul Marino</li>
+        </ul>
+
+        <div class="imagenes-grupo">
+            <img src="IMG-20260707-WA0011.jpg" class="modelo-img" onclick="abrirModal(3)">
+            <img src="IMG-20260707-WA0010.jpg" class="modelo-img" onclick="abrirModal(4)">
+        </div>
+        <img src="IMG-20260707-WA0009.jpg" class="modelo-img" style="width: 100%; margin-top: 0;" onclick="abrirModal(5)">
+
+        <!-- INFORMACIÓN DE VENTA -->
+        <div class="fabrica-destacado">
+            <strong>Venta Directa de Fábrica por Menor y Mayor</strong><br>
+            Despachos y entregas organizadas a todo el país<br>
+            Aceptamos Efectivo · Transferencia · Mercado Pago
+        </div>
+    </div>
+
+    <!-- BOTONES DE CONTACTO ABAJO DEL TODO -->
+    <a class="btn-whatsapp" href="https://wa.me/5491141852322?text=Hola%20Valtor!%20Quiero%20consultar%20el%20catálogo%20de%20sillones">
+        💬 Consultar Stock por WhatsApp
+    </a>
+
+    <!-- SCRIPT DEL CARRUSEL INFINITO SEGURO -->
+    <script>
+        const fotos = [
+            "IMG-20260707-WA0015.jpg",
+            "IMG-20260707-WA0014.jpg",
+            "IMG-20260707-WA0013.jpg",
+            "IMG-20260707-WA0011.jpg",
+            "IMG-20260707-WA0010.jpg",
+            "IMG-20260707-WA0009.jpg"
+        ];
+        let index = 0;
+
+        function abrirModal(i) {
+            index = i;
+            document.getElementById('modal-img').src = fotos[index];
+            document.getElementById('modal').style.display = "flex";
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        function cambiar(n) {
+            index += n;
+            if (index < 0) index = fotos.length - 1;
+            if (index >= fotos.length) index = 0;
+            document.getElementById('modal-img').src = fotos[index];
+        }
+
+        // --- LÓGICA DE CARRUSEL LOOP INFINITO ---
+        const galeria = document.getElementById('galeria-fotos');
+        const originales = Array.from(galeria.children);
+        const totalOriginales = originales.length;
+
+        // Clonar elementos para simular infinitud
+        for (let i = 0; i < 2; i++) {
+            originales.forEach(img => galeria.appendChild(img.cloneNode(true)));
+        }
+        originales.slice().reverse().forEach(img => galeria.insertBefore(img.cloneNode(true), galeria.firstChild));
+
+        const todasLasImgs = galeria.querySelectorAll('img');
+        const anchoItem = originales[0].offsetWidth + 15; 
+        const tamañoSetOriginal = anchoItem * totalOriginales;
+
+        window.addEventListener('load', () => {
+            galeria.scrollLeft = tamañoSetOriginal;
+            actualizarImagenActiva();
+        });
+
+        galeria.addEventListener('scroll', () => {
+            actualizarImagenActiva();
+            if (galeria.scrollLeft >= tamañoSetOriginal * 2) {
+                galeria.scrollLeft -= tamañoSetOriginal; 
+            } else if (galeria.scrollLeft <= anchoItem) {
+                galeria.scrollLeft += tamañoSetOriginal; 
+            }
+        });
+
+        function actualizarImagenActiva() {
+            const centroGaleria = galeria.offsetWidth / 2 + galeria.scrollLeft;
+            let imagenMasCercana = null;
+            let distanciaMinima = Infinity;
+
+            todasLasImgs.forEach((img) => {
+                const centroImagen = img.offsetLeft + img.offsetWidth / 2;
+                const distancia = Math.abs(centroGaleria - centroImagen);
+                img.classList.remove('activa');
+
+                if (distancia < distanciaMinima) {
+                    distanciaMinima = distancia;
+                    imagenMasCercana = img;
+                }
+            });
+
+            if (imagenMasCercana) {
+                imagenMasCercana.classList.add('activa');
+            }
+            return imagenMasCercana;
+        }
+
+        let scrollTimeout;
+        galeria.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const activa = actualizarImagenActiva();
+                if (activa) {
+                    const centroGaleria = galeria.offsetWidth / 2;
+                    const centroImagen = activa.offsetLeft + activa.offsetWidth / 2;
+                    galeria.scrollTo({
+                        left: centroImagen - centroGaleria,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 150); 
+        });
+
+        window.addEventListener('resize', () => {
+            galeria.scrollLeft = tamañoSetOriginal;
+            actualizarImagenActiva();
+        });
+    </script>
 
 </body>
 </html>
